@@ -6,7 +6,7 @@ div.main-text {
   border-bottom: 4px solid #ddd;
 }
 
-/* Groessere Textabschnitte werden als eigene Bloecke voneinander getrennt. */
+/* Größere Textabschnitte werden als eigene Blöcke voneinander getrennt. */
 div.main-text > div {
   display: flow-root;
   margin-bottom: 2rem;
