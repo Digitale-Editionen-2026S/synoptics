@@ -7,9 +7,9 @@
     version="2.0">
     <!-- Render page breaks as images -->
     <xsl:template match="tei:pb">
-        <xsl:variable name="gid" select="@facs" />
+        <xsl:variable name="gid" select="substring-after(@facs, '#')" />
         <xsl:variable name="g"
-            select="/tei:TEI/tei:facsimile/tei:graphic[@xml:id = $gid]" />
+            select="/tei:TEI/tei:facsimile/tei:surface/tei:graphic[@xml:id = $gid]" />
             <div class="pb-image-wrap">
                 <img class="pb-image"
                     src="{$g/@url}"
