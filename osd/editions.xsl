@@ -168,8 +168,8 @@
     <xsl:template match="tei:pb">
         <!-- PB-Referenz auf die facsimile-Graphic (xml:id) normalisieren. -->
         <xsl:variable name="gid" select="replace(@facs, '^#', '')"/>
-        <!-- Bild-URL zur jeweiligen Graphic auflösen; leerer Wert bedeutet: keine verfügbare Abbildung. -->
-        <xsl:variable name="image_url" select="string(/tei:TEI/tei:facsimile/tei:graphic[@xml:id = $gid]/@url)"/>
+        <!-- Bild-URL zur PB-Referenz auflösen: bevorzugt über surface/@xml:id, optional über graphic/@xml:id. -->
+        <xsl:variable name="image_url" select="string((/tei:TEI/tei:facsimile/tei:surface[@xml:id = $gid]/tei:graphic/@url, /tei:TEI/tei:facsimile/tei:graphic[@xml:id = $gid]/@url)[1])"/>
         <xsl:choose>
             <xsl:when test="normalize-space($image_url)">
                 <!-- Marker mit OSD-Datenattributen für IntersectionObserver + Bildwechsel. -->
